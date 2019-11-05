@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
-
+import { MatFileUploadModule } from 'angular-material-fileupload';
 import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
 import { LandingComponent } from './landing/landing.component';
@@ -14,6 +14,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import {
   MatButtonModule,
   MatInputModule,
@@ -60,9 +62,10 @@ import { RegisterRestaurantComponent } from './register-restaurant/register-rest
     MatDatepickerModule,MatNativeDateModule,
     MatSlideToggleModule,
     MatSnackBarModule,
-    MatExpansionModule
-    
-
+    MatExpansionModule,
+    MatFileUploadModule,
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

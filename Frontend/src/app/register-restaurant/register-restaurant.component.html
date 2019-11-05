@@ -32,69 +32,72 @@
               <div class="row justify-content-center">
                 <h1>Register Your Restaurant</h1>
               </div>
-              <div class="row justify-content-center" style="margin-top:40px">
-                <div class="col-md-6">
-                  <mat-form-field>
-                    <input matInput placeholder="Restaurant Name" type="text">
+              <form [formGroup]="restaurantForm" [hidden]="success" (ngSubmit)="onSubmit()">
+                <div class="row justify-content-center" style="margin-top:40px">
+                  <div class="col-md-6">
+                    <mat-form-field>
+                      <input matInput placeholder="Restaurant Name" type="text" formControlName="restaurant_name">
 
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-6">
+                    <mat-form-field>
+                      <input matInput placeholder="Restaurant Register No:" type="text" formControlName="reg_no">
+                    </mat-form-field>
+                  </div>
+
+                  <mat-form-field class="example-full-width">
+                    <textarea matInput placeholder="Restaurant Description" formControlName="discription"></textarea>
                   </mat-form-field>
                 </div>
-                <div class="col-md-6">
-                  <mat-form-field>
-                    <input matInput placeholder="Restaurant Register No:" type="text">
-                  </mat-form-field>
-                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <mat-form-field>
+                      <input matInput placeholder="Name Of the Owner" type="text" formControlName="owner_name">
+                    </mat-form-field>
+                  </div>
 
-                <mat-form-field class="example-full-width">
-                  <textarea matInput placeholder="Restaurant Description"></textarea>
-                </mat-form-field>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <mat-form-field>
-                    <input matInput placeholder="Name Of the Owner" type="text">
-                  </mat-form-field>
-                </div>
+                  <div class="col-md-5">
+                    <mat-form-field>
+                      <input matInput placeholder="NIC" type="number" formControlName="NIC">
+                    </mat-form-field>
+                  </div>
 
-                <div class="col-md-5">
-                  <mat-form-field>
-                    <input matInput placeholder="NIC" type="number">
-                  </mat-form-field>
-                </div>
+                  <div class="col-md-1" style="margin-top:20px">
+                    <b>V</b>
+                  </div>
 
-                <div class="col-md-1" style="margin-top:20px">
-                  <b>V</b>
-                </div>
-              
-              
-                <b>Address</b>
-                
+
+                  <b>Address</b>
+
+                  <mat-form-field>
+                    <input matInput placeholder="Street Address 1" type="text" formControlName="streetAddress1">
+                  </mat-form-field>
+
+                  <div class="col-md-6">
                     <mat-form-field>
-                        <input matInput placeholder="Street Address 1" type="text">
-                      </mat-form-field>
-                
-                <div class="col-md-6">
+                      <input matInput placeholder="Street Address 2" type="text" formControlName="streetAddress2">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-6">
                     <mat-form-field>
-                        <input matInput placeholder="Street Address 2" type="text">
-                      </mat-form-field>
-                </div>
-                <div class="col-md-6">
+                      <input matInput placeholder="City" type="text" formControlName="city">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-6">
                     <mat-form-field>
-                        <input matInput placeholder="City" type="text">
-                      </mat-form-field>
+                      <input matInput placeholder="Contact No" type="text" formControlName="phone_no">
+                    </mat-form-field>
+                  </div>
+                  Select a file: <input type="file" name="myFile" formControlName="owner_pics">
                 </div>
-                <div class="col-md-6">
-                    <mat-form-field>
-                        <input matInput placeholder="Contact No" type="text">
-                      </mat-form-field>
-                </div>
-                
+                <input type="submit" value="Submit details">
+              </form>
             </div>
           </div>
-        </div>
 
+        </div>
       </div>
-    </div>
     </div>
   </section>
 </main>
