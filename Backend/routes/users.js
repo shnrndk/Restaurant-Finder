@@ -3,7 +3,7 @@ var express = require('express');
 var router = express.Router();
 var useraccounts = require('../Schemas/userSchema');
 var mongoose = require('mongoose');
-
+const jwt = require('jsonwebtoken')
 router.get('/events', (req,res) => {
     let events = [
       {
@@ -95,7 +95,9 @@ router.post('/register', (req, res) => {
         if(error){
             console.log(error)
         }else{
-            res.status(200).send(registeredUser)
+            let payload = {subject: registeredUser._id}
+            let token = jwt.sign(payload, 'secretKey')
+            res.status(200).send({token})
         }
     });
     
@@ -111,11 +113,13 @@ router.post('/login',(req,res)=>{
             if(!user){
                 res.status(401).send('Invalid Email')
             }else{
-                if(user.password!==user.password){
+                if(user.password!==userData.password){
                     console.log(user.password)
                     res.status(401).send('Invalid Password')
                 }else{
-                    res.status(200).send(user)
+                    let payload = {subject: user._id}
+                    let token = jwt.sign(payload, 'secretKey')
+                    res.status(200).send({token})
                 }
             }
         }

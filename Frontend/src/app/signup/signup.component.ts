@@ -23,7 +23,11 @@ export class SignupComponent implements OnInit {
         console.log(this.registerUserData)
         this._auth.registerUser(this.registerUserData)
         .subscribe(
-            res=>console.log(res),
+            res=>{
+                console.log(res)
+                localStorage.setItem('token',res.token)
+                this._router.navigate(['/home']);
+            },
             err=>console.log(err)
         )
     }

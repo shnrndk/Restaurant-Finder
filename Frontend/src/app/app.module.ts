@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app.routing';
 import { MatFileUploadModule } from 'angular-material-fileupload';
 import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
-import { LandingComponent } from './landing/landing.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
@@ -36,19 +35,20 @@ import { RegisterRestaurantComponent } from './register-restaurant/register-rest
 import { ViewRestaurantsComponent } from './view-restaurants/view-restaurants.component';
 import { ViewRestaurantbyIdComponent } from './view-restaurantby-id/view-restaurantby-id.component';
 import { AuthService } from './auth.service';
+import { EventService } from './event.service';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
-    LandingComponent,
     ProfileComponent,
     NavbarComponent,
     FooterComponent,
     LoginComponent,
     RegisterRestaurantComponent,
     ViewRestaurantsComponent,
-    ViewRestaurantbyIdComponent
+    ViewRestaurantbyIdComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,7 +75,7 @@ import { AuthService } from './auth.service';
     FormsModule
   
   ],
-  providers: [AuthService],
+  providers: [AuthService,AuthGuard,EventService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
