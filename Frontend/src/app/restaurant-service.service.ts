@@ -26,4 +26,9 @@ export class RestaurantServiceService {
     let url = `http://localhost:3000/restaurants/search/${searchdata}`
     return this.http.get<Restaurant>(url);
    }
+
+   viewById(reg_no){
+     let url = `http://localhost:3000/restaurants/viewbyid/${reg_no}`
+     return this.http.get<Restaurant>(url);
+   }
 }

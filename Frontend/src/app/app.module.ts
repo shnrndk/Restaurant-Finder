@@ -37,6 +37,7 @@ import { ViewRestaurantbyIdComponent } from './view-restaurantby-id/view-restaur
 import { AuthService } from './auth.service';
 import { EventService } from './event.service';
 import { AuthGuard } from './auth.guard';
+import { ReviewFormComponent } from './review-form/review-form.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { AuthGuard } from './auth.guard';
     RegisterRestaurantComponent,
     ViewRestaurantsComponent,
     ViewRestaurantbyIdComponent,
+    ReviewFormComponent,
   ],
   imports: [
     BrowserModule,

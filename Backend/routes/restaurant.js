@@ -79,7 +79,7 @@ router.put('/update', async (req, res) => {
 });
 
 router.get('/viewbyid/:id', (req, res) => {
-    Restaurant.find({ Identity_number: req.params.id }, (err, doc) => {
+    Restaurant.find({ reg_no: req.params.id }, (err, doc) => {
 
         if (doc.length) {
             res.send(doc);
