@@ -12,6 +12,7 @@ import { RegisterRestaurantComponent } from './register-restaurant/register-rest
 import { ViewRestaurantsComponent } from './view-restaurants/view-restaurants.component';
 import { ViewRestaurantbyIdComponent } from './view-restaurantby-id/view-restaurantby-id.component';
 import { AuthGuard } from './auth.guard';
+import { ReviewFormComponent } from './review-form/review-form.component';
 
 const routes: Routes =[
     { path: 'home',             component: HomeComponent },
@@ -20,10 +21,15 @@ const routes: Routes =[
  
     { path: 'login',          component: LoginComponent },
     { path: 'registerRestaurant',     component: RegisterRestaurantComponent, canActivate:[AuthGuard]},
-    { path: 'viewRestaurants',     component: ViewRestaurantsComponent,
-    
-    },
-    { path: 'ViewRestaurantById/:reg_no',component: ViewRestaurantbyIdComponent},
+    { path: 'viewRestaurants',     component: ViewRestaurantsComponent },
+    { path: 'ViewRestaurantById/:reg_no',component: ViewRestaurantbyIdComponent,
+        children: [
+            {
+                path: 'AddReview',
+                component: ReviewFormComponent,
+                canActivate:[AuthGuard]
+            }]
+          },
     { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
