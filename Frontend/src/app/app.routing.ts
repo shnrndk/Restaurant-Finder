@@ -9,6 +9,8 @@ import { SignupComponent } from './signup/signup.component';
 import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterRestaurantComponent } from './register-restaurant/register-restaurant.component';
+import { ViewRestaurantsComponent } from './view-restaurants/view-restaurants.component';
+import { ViewRestaurantbyIdComponent } from './view-restaurantby-id/view-restaurantby-id.component';
 
 const routes: Routes =[
     { path: 'home',             component: HomeComponent },
@@ -17,6 +19,10 @@ const routes: Routes =[
     { path: 'landing',          component: LandingComponent },
     { path: 'login',          component: LoginComponent },
     { path: 'registerRestaurant',     component: RegisterRestaurantComponent},
+    { path: 'viewRestaurants',     component: ViewRestaurantsComponent,
+    
+    },
+    { path: 'ViewRestaurantById/:reg_no',component: ViewRestaurantbyIdComponent},
     { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

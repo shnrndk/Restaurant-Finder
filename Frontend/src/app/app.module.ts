@@ -16,6 +16,7 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import {MatTableModule, MatTableDataSource} from '@angular/material/table';
 import {
   MatButtonModule,
   MatInputModule,
@@ -32,6 +33,9 @@ import { HomeModule } from './home/home.module';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterRestaurantComponent } from './register-restaurant/register-restaurant.component';
+import { ViewRestaurantsComponent } from './view-restaurants/view-restaurants.component';
+import { ViewRestaurantbyIdComponent } from './view-restaurantby-id/view-restaurantby-id.component';
+import { AuthService } from './auth.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +46,9 @@ import { RegisterRestaurantComponent } from './register-restaurant/register-rest
     NavbarComponent,
     FooterComponent,
     LoginComponent,
-    RegisterRestaurantComponent
+    RegisterRestaurantComponent,
+    ViewRestaurantsComponent,
+    ViewRestaurantbyIdComponent
   ],
   imports: [
     BrowserModule,
@@ -65,9 +71,11 @@ import { RegisterRestaurantComponent } from './register-restaurant/register-rest
     MatExpansionModule,
     MatFileUploadModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
+  
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -89,9 +89,22 @@
                       <input matInput placeholder="Contact No" type="text" formControlName="phone_no">
                     </mat-form-field>
                   </div>
-                  Select a file: <input type="file" name="myFile" formControlName="owner_pics">
+                  <!--
+                  <label for="singleFile">Upload file</label>
+                    <input id="singleFile" type="file" [fileUploadInputFor]= "fileUploadQueue"/>
+                    <br>
+                    
+                    <mat-file-upload-queue #fileUploadQueue
+                        [fileAlias]="'file'"
+                        [httpUrl]="'http://localhost:3000/restaurants/addImage'">
+                    
+                        <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
+                    </mat-file-upload-queue>-->
                 </div>
-                <input type="submit" value="Submit details">
+                <div class="row justify-content-center">
+                  <input type="submit" value="Submit details" class="btn btn-primary">
+                </div>
+
               </form>
             </div>
           </div>

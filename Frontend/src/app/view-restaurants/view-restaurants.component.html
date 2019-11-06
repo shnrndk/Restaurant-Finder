@@ -1,0 +1,75 @@
+<style>
+  mat-form-field {
+    width: 100%;
+  }
+</style>
+<main class="profile-page">
+  <section class="section-profile-cover section-shaped my-0">
+    <!-- Circles background -->
+    <div class="shape shape-style-1 shape-primary alpha-4">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <!-- SVG separator -->
+    <div class="separator separator-bottom separator-skew">
+      <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1"
+        xmlns="http://www.w3.org/2000/svg">
+        <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+      </svg>
+    </div>
+  </section>
+  
+  <section class="section">
+    <div class="container">
+      <div class="card card-profile shadow mt--300">
+        <div class="px-4">
+          <div class="container" style="margin-top:50px; margin-bottom:50px">
+            <form [formGroup]="searchForm" [hidden]="success" (ngSubmit)="onSubmit()">
+
+              <mat-form-field class="example-full-width">
+                <input matInput placeholder="Search" formControlName="searchdata">
+              </mat-form-field>
+              <div class="row justify-content-center">
+                  <input type="submit" class="btn btn-primary">
+                </div>
+
+            </form>
+            <div class="container">
+              <div class="row justify-content-center">
+                <div>
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">Registration No</th>
+                        <th scope="col">Hotel Name</th>
+                        <th scope="col">City</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Phone No</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let restaurant of restaurants" (click)="onClick(restaurant.reg_no)">
+                        <td>{{restaurant.reg_no}}</td>
+                        <td>{{restaurant.restaurant_name}}</td>
+                        <td>{{restaurant.streetAddress1}}</td>
+                        <td>{{restaurant.city}}</td>
+                        <td>{{restaurant.phone_no}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
