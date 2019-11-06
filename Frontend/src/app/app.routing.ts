@@ -6,15 +6,24 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { SignupComponent } from './signup/signup.component';
-import { LandingComponent } from './landing/landing.component';
+
 import { LoginComponent } from './login/login.component';
+import { RegisterRestaurantComponent } from './register-restaurant/register-restaurant.component';
+import { ViewRestaurantsComponent } from './view-restaurants/view-restaurants.component';
+import { ViewRestaurantbyIdComponent } from './view-restaurantby-id/view-restaurantby-id.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes =[
     { path: 'home',             component: HomeComponent },
     { path: 'user-profile',     component: ProfileComponent },
     { path: 'register',           component: SignupComponent },
-    { path: 'landing',          component: LandingComponent },
+ 
     { path: 'login',          component: LoginComponent },
+    { path: 'registerRestaurant',     component: RegisterRestaurantComponent, canActivate:[AuthGuard]},
+    { path: 'viewRestaurants',     component: ViewRestaurantsComponent,
+    
+    },
+    { path: 'ViewRestaurantById/:reg_no',component: ViewRestaurantbyIdComponent},
     { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

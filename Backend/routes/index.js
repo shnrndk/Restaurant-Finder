@@ -3,9 +3,9 @@ const app = express();
 var router = express.Router();
 
 
-router.use('/families',require('./families'));
+router.use('/restaurants',require('./restaurant'));
 
-//  const user = router.use('/users',require('./users'));
+router.use('/users',require('./users'));
 //  app.use('/user',user);
 
 
