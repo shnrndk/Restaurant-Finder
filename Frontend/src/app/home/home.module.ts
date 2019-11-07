@@ -11,6 +11,7 @@ import { SectionsModule } from '../sections/sections.module';
 
 @NgModule({
     imports: [
+        NgbModule,
         CommonModule,
         BrowserModule,
         FormsModule,
