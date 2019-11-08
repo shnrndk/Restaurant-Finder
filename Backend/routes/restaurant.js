@@ -4,13 +4,34 @@ var Restaurant = require('../Schemas/RestaurantSchema');
 var mongoose = require('mongoose');
 const multer = require('multer');
 
-router.post('/add', (req, res) => {
+router.post('/add', async(req, res) => {
+    
     console.log(req.body);
     var data = new Restaurant(req.body);
     data.save((err,doc)=>{
         res.status(200).send("Inserted successfully.");
     });
     console.log("Completed");
+/*
+    try {
+        
+        const update = req.body;
+
+        let filter = await Restaurant.find().sort({ _id: -1 }).limit(1)
+        
+        mongoose.set('useFindAndModify', false);
+        //await Restaurant.countDocuments(filter[{}]); // 0
+        await console.log(filter[0])
+        let doc = await Restaurant.findOneAndUpdate(filter, update, {
+            new: true,
+            upsert: false // Make this update into an upsert
+        });
+        res.status(201).send(doc)
+        //console.log(doc);
+    } catch (error) {
+        res.status(500).send(error);
+        console.log(error);
+    }*/
 });
 
 const storage = multer.diskStorage({
@@ -21,8 +42,14 @@ const storage = multer.diskStorage({
 })
 
 const upload = multer({storage:storage})
-router.post('/addImage',upload.array('file'),(req,res)=>{
-    
+router.post('/addImage',upload.single('file'),(req,res)=>{
+    console.log(req.file['filename'])
+    req.body['owner_pics']=req.file['filename']
+    var data = new Restaurant(req.body);
+    data.save((err,doc)=>{
+        res.status(200).send("Inserted successfully.");
+    });
+    console.log("Completed");
 })
 
 
