@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChatService } from '../chat.service';
+import { AuthService } from '../auth.service';
 @Component({
   selector: 'app-chat-app',
   templateUrl: './chat-app.component.html',
@@ -14,7 +15,7 @@ export class ChatAppComponent implements OnInit{
 
   
   messageArray:Array<{user:String,message:String}> = [];
-  constructor(private _chatService:ChatService){
+  constructor(private _chatService:ChatService,private userservice : AuthService){
       this._chatService.newUserJoined()
       .subscribe(data=> this.messageArray.push(data));
 
@@ -28,6 +29,7 @@ export class ChatAppComponent implements OnInit{
 
   ngOnInit() {
     this.room = "Restaurant Finder";
+    this.user = localStorage.getItem('username')
   }
 
   join(){

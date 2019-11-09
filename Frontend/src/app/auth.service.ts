@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Router } from '@angular/router'
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ export class AuthService {
 
   private _registerUrl = "http://localhost:3000/users/register";
   private _loginUrl = "http://localhost:3000/users/login";
+  userstatus : Observable<any>;
 
   constructor(private http: HttpClient,
               private _router: Router) { }
@@ -30,4 +32,5 @@ export class AuthService {
     this._router.navigate(['/home'])
   }
 
+  
 }

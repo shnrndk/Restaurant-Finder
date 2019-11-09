@@ -1,24 +1,21 @@
 <div class="container-fluid">
+  
   <div class="row">
-      <h2>Restaurant Finder Chat</h2>
-      <hr>
-  </div>
-  <div class="row">
-      <div class="col-sm-5">
+      <div class="col-sm-5" hidden>
           <div class="form-group">
               <label for="username">Username</label>
               <input type="text" [(ngModel)]="user" class="form-control" id="username" placeholder="Enter username">
               <!-- <small id="userHelp" class="form-text text-muted">Type your username.</small> -->
           </div>
       </div>
-      <div class="col-sm-5">
+      <div class="col-sm-5" hidden>
           <label for="roomInput">Choose room</label>
           <select name="roomInput" id="roomInput" class="form-control" [(ngModel)]="room" hidden>
               <option value="Restaurant Finder">Restaurant Finder</option>
           </select>
       </div>
       <div class="col sm-2">
-          <div style="margin-top:19px;" class="pull-right"> 
+          <div style="margin-top:19px; margin-right:60px" class="pull-right"> 
               <button type="button" class="btn btn-primary" (click)="join()">Join</button>
               <button type="button" class="btn btn-default" (click)="leave()">Leave</button>
           </div>

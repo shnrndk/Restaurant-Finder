@@ -70,4 +70,12 @@ export class NavbarComponent implements OnInit {
           panelClass: ['blue-snackbar']
         });
     }
+
+    changeInterface(){
+        if(localStorage.getItem['userstatus']="Restaurant Owner"){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }
