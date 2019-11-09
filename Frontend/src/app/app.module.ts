@@ -40,6 +40,7 @@ import { AuthGuard } from './auth.guard';
 import { ReviewFormComponent } from './review-form/review-form.component';
 import { MaterialFileUploadComponent } from './material-file-upload/material-file-upload.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { ChatAppComponent } from './chat-app/chat-app.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     ViewRestaurantbyIdComponent,
     ReviewFormComponent,
     MaterialFileUploadComponent,
+    ChatAppComponent,
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { Location, PopStateEvent } from '@angular/common';
 import { AuthService } from 'src/app/auth.service';
+import { MatSnackBar } from '@angular/material';
+import { ChatAppComponent } from 'src/app/chat-app/chat-app.component';
 
 @Component({
     selector: 'app-navbar',
@@ -13,7 +15,7 @@ export class NavbarComponent implements OnInit {
     private lastPoppedUrl: string;
     private yScrollStack: number[] = [];
 
-    constructor(public location: Location, private router: Router, private _authService:AuthService) {
+    constructor(public location: Location, private router: Router, private _authService:AuthService,private _snackBar: MatSnackBar) {
     }
 
     ngOnInit() {
@@ -53,5 +55,19 @@ export class NavbarComponent implements OnInit {
         else {
             return false;
         }
+    }
+
+    chat(){
+        this.openSnackBar()
+    }
+
+    openSnackBar() {
+        this._snackBar.openFromComponent(ChatAppComponent, {
+          //duration: 2000,
+          // here specify the position
+          verticalPosition: 'bottom',
+          horizontalPosition:'right',
+          panelClass: ['blue-snackbar']
+        });
     }
 }
