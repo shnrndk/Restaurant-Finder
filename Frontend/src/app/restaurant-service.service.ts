@@ -31,4 +31,14 @@ export class RestaurantServiceService {
      let url = `http://localhost:3000/restaurants/viewbyid/${reg_no}`
      return this.http.get<Restaurant>(url);
    }
+/*
+   upload(): Observable<Restaurant>{
+    let url = "http://localhost:3000/restaurants/view";
+    return this.http.get<Restaurant>(url)
+  }
+*/
+  upload(restaurantData){                                   //Post the approved family details
+    console.log(restaurantData)
+    return this.http.post<Restaurant>(this.__url,restaurantData);
+   }
 }

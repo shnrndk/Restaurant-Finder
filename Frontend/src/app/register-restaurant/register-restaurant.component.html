@@ -89,17 +89,20 @@
                       <input matInput placeholder="Contact No" type="text" formControlName="phone_no">
                     </mat-form-field>
                   </div>
+                
                   
-                  <label for="singleFile">Upload file</label>
-                    <input id="singleFile" type="file" [fileUploadInputFor]= "fileUploadQueue"/>
+            
+
+                  <div style="text-align:center">
+                      <app-material-file-upload (complete)="onFileComplete($event)"></app-material-file-upload>
+                  </div>
+                
+                </div>
+
+                <b>Available Food Items</b>
+                <div *ngFor="let data of fooditems">
+                    <input type="checkbox" (change)="onChange(data.fooditem, $event.target.checked)"> {{data.fooditem}}
                     <br>
-                    
-                    <mat-file-upload-queue #fileUploadQueue
-                        [fileAlias]="'file'"
-                        [httpUrl]="'http://localhost:3000/restaurants/addImage'">
-                    
-                        <mat-file-upload [file]="file" [id]="i" *ngFor="let file of fileUploadQueue.files; let i = index"></mat-file-upload>
-                    </mat-file-upload-queue>
                 </div>
                 <div class="row justify-content-center">
                   <input type="submit" value="Submit details" class="btn btn-primary">

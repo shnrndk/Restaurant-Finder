@@ -13,6 +13,7 @@ var Restaurant = new Schema({
     //"district":String,
     "phone_no": String,
     "owner_pics":String,
+    "food_types":[String],
     "customer_pics":String,
     "reviews":{
         "id":String,
