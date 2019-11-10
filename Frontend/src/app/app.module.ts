@@ -43,6 +43,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { ChatAppComponent } from './chat-app/chat-app.component';
 import { ViewReviewsComponent } from './view-reviews/view-reviews.component';
 import { ContactAdminComponent } from './contact-admin/contact-admin.component';
+import { PostAddsComponent } from './post-adds/post-adds.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,8 @@ import { ContactAdminComponent } from './contact-admin/contact-admin.component';
     ChatAppComponent,
     ViewReviewsComponent,
     ContactAdminComponent,
+    PostAddsComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -85,7 +88,8 @@ import { ContactAdminComponent } from './contact-admin/contact-admin.component';
     HttpClientModule,
     FormsModule,
     MatProgressBarModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    
   
   ],
   providers: [AuthService,AuthGuard,EventService],

@@ -1,0 +1,12 @@
+<div style="margin-top:100px">
+<b>Advertisements</b>
+
+<ngb-carousel>
+  <div *ngFor="let add of adds">
+    <ng-template ngbSlide>
+      <img class="img-fluid" src="{{add.addImage}}" alt="{{add.description}}" style="width : auto;
+      height: 500px;" >
+    </ng-template>
+  </div>
+</ngb-carousel>
+</div>

@@ -43,6 +43,7 @@ export class RegisterRestaurantComponent implements OnInit {
    }
 
    if (this.restaurantForm.value['owner_pics']==undefined) {
+     this.openSnackBar("Please Upload An Image");
     return;
  }
   

@@ -102,6 +102,28 @@ Restaurant.find({ restaurant_name: new RegExp(searchdata,'i')}, (err, doc) => {
 });
 
 
+router.get('/searchByCity/:searchdata', (req, res) => {
+    searchdata = req.params.searchdata;
+    console.log(searchdata)
+    if(searchdata=='0'){
+        Restaurant.find((err, doc) => {
+            res.send(doc)
+        })
+    }else{
+    Restaurant.find({ city: new RegExp(searchdata,'i')}, (err, doc) => {
+            if (doc.length) {
+                res.send(doc);
+                console.log(doc);
+            }
+            else {
+                console.log('Cannot find the record');
+                res.status(500).send("Cannot find the record");
+            }
+        });
+    }
+    });
+
+
 
 router.put('/update', async (req, res) => {
     try {

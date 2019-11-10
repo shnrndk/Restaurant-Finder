@@ -15,15 +15,18 @@ import { AuthGuard } from './auth.guard';
 import { ReviewFormComponent } from './review-form/review-form.component';
 import { ChatAppComponent } from './chat-app/chat-app.component';
 import { ViewReviewsComponent } from './view-reviews/view-reviews.component';
+import { PostAddsComponent } from './post-adds/post-adds.component';
+import { ContactAdminComponent } from './contact-admin/contact-admin.component';
 
 const routes: Routes =[
     { path: 'home',             component: HomeComponent },
     { path: 'user-profile',     component: ProfileComponent },
     { path: 'register',           component: SignupComponent },
-    { path: 'chat',   component:ChatAppComponent },
+    { path: 'chat',   component:ChatAppComponent  },
     { path: 'login',          component: LoginComponent },
     { path: 'registerRestaurant',     component: RegisterRestaurantComponent, canActivate:[AuthGuard]},
     { path: 'viewRestaurants',     component: ViewRestaurantsComponent },
+    { path: 'postAdds',     component: PostAddsComponent , canActivate:[AuthGuard] },
     { path: 'ViewRestaurantById/:reg_no',component: ViewRestaurantbyIdComponent,
         children: [
             {
@@ -34,6 +37,11 @@ const routes: Routes =[
             {
                 path: 'ViewReview',
                 component: ViewReviewsComponent
+            },
+            {
+              path: 'contactAdmin',
+              component: ContactAdminComponent,
+              canActivate:[AuthGuard]
             }
           ]
           },

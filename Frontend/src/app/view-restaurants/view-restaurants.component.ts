@@ -43,6 +43,12 @@ export class ViewRestaurantsComponent implements OnInit {
           response=>console.log('Success!',response),
           
       );
+
+      this.restaurantservice.searchByCity(this.searchForm.value['searchdata'])
+        .subscribe(
+          data=>this.restaurants = data,
+          response=>console.log('Success!',response),
+      );
   }
 
   onClick(reg_no){
