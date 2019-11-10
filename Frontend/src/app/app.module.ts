@@ -15,7 +15,7 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import {MatTableModule, MatTableDataSource} from '@angular/material/table';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {
   MatButtonModule,
   MatInputModule,
@@ -38,7 +38,9 @@ import { AuthService } from './auth.service';
 import { EventService } from './event.service';
 import { AuthGuard } from './auth.guard';
 import { ReviewFormComponent } from './review-form/review-form.component';
-
+import { MaterialFileUploadComponent } from './material-file-upload/material-file-upload.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { ChatAppComponent } from './chat-app/chat-app.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { ReviewFormComponent } from './review-form/review-form.component';
     ViewRestaurantsComponent,
     ViewRestaurantbyIdComponent,
     ReviewFormComponent,
+    MaterialFileUploadComponent,
+    ChatAppComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,7 +79,9 @@ import { ReviewFormComponent } from './review-form/review-form.component';
     MatFileUploadModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatProgressBarModule,
+    MatCheckboxModule
   
   ],
   providers: [AuthService,AuthGuard,EventService],

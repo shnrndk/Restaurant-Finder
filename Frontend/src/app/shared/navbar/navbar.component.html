@@ -24,20 +24,23 @@
           </div>
         </div>
       </div>
+      <!--
       <ul class="navbar-nav">
-          <a [routerLink]="['/registerRestaurant']">
-            <span class="nav-link"><i class="fa fa-plus" aria-hidden="true"></i>Register Restaurant</span>
-          </a>
+          <button mat-flat-button color="primary"  [routerLink]="['/registerRestaurant']">
+            <i class="fa fa-plus" aria-hidden="true"></i>Register Restaurant
+          </button>
           
       </ul>
       <ul class="navbar-nav">
-          <a [routerLink]="['/viewRestaurants']">
-            <span class="nav-link">
-            <i class="fa fa-search" aria-hidden="true"></i>
-            Search Restaurants</span>
-          </a>
+          <button mat-flat-button color="primary" (click)="chat()">Chat</button>
       </ul>
-    
+      <ul class="navbar-nav">
+          <button mat-flat-button color="primary" [routerLink]="['/viewRestaurants']">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            Search Restaurants
+          </button>
+      </ul>
+    -->
       <!--
       <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
         
@@ -57,23 +60,38 @@
      
       </ul>-->
       <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+        <li class="nav-item" *ngIf="changeInterface()">
+            <button mat-flat-button color="primary"  [routerLink]="['/registerRestaurant']">
+              <i class="fa fa-plus" aria-hidden="true"></i>Register Restaurant
+            </button>
+        </li>
         <li class="nav-item">
-          <a class="nav-link" *ngIf="!_authService.loggedIn()" [routerLink]="['/login']" data-toggle="tooltip" title="Login">
+            
+            <button mat-flat-button color="primary" (click)="chat()"><i class="fa fa-weixin" aria-hidden="true"></i>Chat</button>
+        </li>
+        <li class="nav-item">
+            <button mat-flat-button color="primary" [routerLink]="['/viewRestaurants']">
+              <i class="fa fa-search" aria-hidden="true"></i>
+              Search Restaurants
+            </button>
+        </li>
+        <li class="nav-item">
+          <button mat-flat-button color="primary" *ngIf="!_authService.loggedIn()" [routerLink]="['/login']" data-toggle="tooltip" title="Login">
             <i class="fa fa-sign-in" aria-hidden="true"></i>
             Sign In
-          </a>
+          </button>
         </li>
         <li class="nav-item">
-          <a class="nav-link" *ngIf="!_authService.loggedIn()" [routerLink]="['/register']" data-toggle="tooltip" title="Register">
+          <button mat-flat-button color="primary" *ngIf="!_authService.loggedIn()" [routerLink]="['/register']" data-toggle="tooltip" title="Register">
             <i class="fa fa-user-plus" aria-hidden="true"></i>
             Register
-          </a>
+          </button>
         </li>
         <li class="nav-item">
-          <a class="nav-link" *ngIf="_authService.loggedIn()" (click)="_authService.logoutUser()" data-toggle="tooltip" title="Logout">
+          <button mat-flat-button color="primary" *ngIf="_authService.loggedIn()" (click)="_authService.logoutUser()" data-toggle="tooltip" title="Logout">
               <i class="fa fa-sign-out" aria-hidden="true">
-            Logout</i>
-          </a>
+            </i>Logout
+              </button>
         </li>
       </ul>
     </div>

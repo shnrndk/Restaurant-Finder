@@ -13,12 +13,13 @@ import { ViewRestaurantsComponent } from './view-restaurants/view-restaurants.co
 import { ViewRestaurantbyIdComponent } from './view-restaurantby-id/view-restaurantby-id.component';
 import { AuthGuard } from './auth.guard';
 import { ReviewFormComponent } from './review-form/review-form.component';
+import { ChatAppComponent } from './chat-app/chat-app.component';
 
 const routes: Routes =[
     { path: 'home',             component: HomeComponent },
     { path: 'user-profile',     component: ProfileComponent },
     { path: 'register',           component: SignupComponent },
- 
+    { path: 'chat',   component:ChatAppComponent },
     { path: 'login',          component: LoginComponent },
     { path: 'registerRestaurant',     component: RegisterRestaurantComponent, canActivate:[AuthGuard]},
     { path: 'viewRestaurants',     component: ViewRestaurantsComponent },
