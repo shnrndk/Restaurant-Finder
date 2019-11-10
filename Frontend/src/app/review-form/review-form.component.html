@@ -31,9 +31,17 @@
                       <textarea matInput placeholder="Review" formControlName="review"></textarea>
                     </mat-form-field>
                   </div>
-                  <div class="row">
- 
+                  
+                  <div class="row justify-content-center">
+                      <div style="text-align:'center'; margin-right:'100px !important'">
+                          <app-material-file-upload (complete)="onFileComplete($event)"></app-material-file-upload>
+                          <b>{{imagecount}} images Has been uploaded.</b>
+                      </div>
                   </div>
+                  <br>
+                  <br>
+ 
+                  
                   <div class="row justify-content-center">
                     <input type="submit" value="Submit Review" class="btn btn-primary">
                   </div>

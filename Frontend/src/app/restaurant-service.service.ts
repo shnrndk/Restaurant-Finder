@@ -11,10 +11,11 @@ export class RestaurantServiceService {
   constructor(private http: HttpClient) { }
 
   
-  __url= "http://localhost:3000/restaurants/add";
-   add(restaurantData){                                   //Post the approved family details
+  
+   add(restaurantData){     
+    let url= "http://localhost:3000/restaurants/add";                              //Post the approved family details
     console.log(restaurantData)
-    return this.http.post<Restaurant>(this.__url,restaurantData);
+    return this.http.post<Restaurant>(url,restaurantData);
    }
 
    view(): Observable<Restaurant>{
@@ -31,14 +32,14 @@ export class RestaurantServiceService {
      let url = `http://localhost:3000/restaurants/viewbyid/${reg_no}`
      return this.http.get<Restaurant>(url);
    }
+
+   addReview(reviewData){
+      let url="http://localhost:3000/reviews/add";
+      return this.http.post<any>(url,reviewData);
+   }
 /*
-   upload(): Observable<Restaurant>{
-    let url = "http://localhost:3000/restaurants/view";
-    return this.http.get<Restaurant>(url)
-  }
-*/
   upload(restaurantData){                                   //Post the approved family details
     console.log(restaurantData)
     return this.http.post<Restaurant>(this.__url,restaurantData);
-   }
+   }*/
 }
