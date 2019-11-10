@@ -33,7 +33,10 @@
                         <tr *ngFor="let review of reviews">
                           <td>{{review.review}}</td>
                           <td>{{review.email}}</td>
-                          <td><img src="{{review.pics[2]}}" class="rounded">{{review.pics[2]}}</td>
+                          <td><img src="{{review.pics[0]}}" class="rounded" style="width : 200px; height: auto;">
+                            <img src="{{review.pics[1]}}" class="rounded" style="width : 200px; height: auto;">
+                            <img src="{{review.pics[2]}}" class="rounded" style="width : 200px; height: auto;">
+                          </td>
                         </tr>
                       </tbody>
                     </table>

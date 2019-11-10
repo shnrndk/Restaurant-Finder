@@ -5,7 +5,7 @@
 <br/>
 
 <ul>
-      <li *ngFor="let file of files" [@fadeInOut]="file.state" style="margin-left:100px">
+      <li *ngFor="let file of files" [@fadeInOut]="file.state">
            <mat-progress-bar [value]="file.progress"></mat-progress-bar> 
             <span id="file-label">
             {{file.data.name}} 

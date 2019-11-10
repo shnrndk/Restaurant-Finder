@@ -2,23 +2,19 @@ const mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var Restaurant = new Schema({
 
-    "reg_no": Number,
-    "restaurant_name": String,
-    "discription":String,
-    "owner_name": String,
-    "NIC": String,
-    "streetAddress1":String,
-    "streetAddress2":String,
-    "city":String,
+    "reg_no": String,
+    "restaurant_name": {type:String,required:true},
+    "discription":{type:String,required:true},
+    "owner_name": {type:String,required:true},
+    "NIC": {type:String,required:true},
+    "streetAddress1":{type:String,required:true},
+    "streetAddress2":{type:String},
+    "city":{type:String,required:true},
     //"district":String,
-    "phone_no": String,
-    "owner_pics":String,
-    "food_types":[String],
-    "customer_pics":String,
-    "reviews":{
-        "id":String,
-        "review":String
-    }
+    "phone_no": {type:String,required:true},
+    "owner_pics":{type:String,required:true},
+    "food_types":[String]
+    
 }, { collection: 'RestaurantDetails' });
 
 var Restaurant = mongoose.model('Restaurant', Restaurant);

@@ -42,6 +42,7 @@ import { MaterialFileUploadComponent } from './material-file-upload/material-fil
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { ChatAppComponent } from './chat-app/chat-app.component';
 import { ViewReviewsComponent } from './view-reviews/view-reviews.component';
+import { ContactAdminComponent } from './contact-admin/contact-admin.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { ViewReviewsComponent } from './view-reviews/view-reviews.component';
     MaterialFileUploadComponent,
     ChatAppComponent,
     ViewReviewsComponent,
+    ContactAdminComponent,
   ],
   imports: [
     BrowserModule,

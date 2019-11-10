@@ -3,13 +3,23 @@ var router = express.Router();
 var Restaurant = require('../Schemas/RestaurantSchema');
 var mongoose = require('mongoose');
 const multer = require('multer');
+var cloudinary = require('cloudinary').v2;
+
+cloudinary.config({
+    cloud_name:'datla6jwf',
+    api_key:'327471161541859',
+    api_secret:'eCIw1-mDssGxKfqqNXpy_qjYLqU'
+});
+
+
 
 router.post('/add', async(req, res) => {
     
     console.log(req.body);
     var data = new Restaurant(req.body);
     data.save((err,doc)=>{
-        res.status(200).send("Inserted successfully.");
+        doc=>res.status(200).send("Inserted successfully.");
+        err=>res.status(401).send(err)
     });
     console.log("Completed");
 /*
@@ -42,14 +52,23 @@ const storage = multer.diskStorage({
 })
 
 const upload = multer({storage:storage})
-router.post('/addImage',upload.single('file'),(req,res)=>{
+router.post('/addImage',upload.single('file'),async(req,res)=>{
+    /*
     console.log(req.file['filename'])
     req.body['owner_pics']=req.file['filename']
     var data = new Restaurant(req.body);
     data.save((err,doc)=>{
         res.status(200).send("Inserted successfully.");
     });
-    console.log("Completed");
+    console.log("Completed");*/
+     ;
+    console.log(`./uploads/${req.file['filename']}`,);
+    /*
+    cloudinary.uploader.upload(this.fileurl,(err,result)=>{
+        console.log("Error:",err)
+        console.log("Result:",result)
+    })*/
+    await cloudinary.uploader.upload(`./uploads/${req.file['filename']}`, {"crop":"limit","tags":"samples","width":3000,"height":2000}, function(result) { console.log(result) });
 })
 
 
