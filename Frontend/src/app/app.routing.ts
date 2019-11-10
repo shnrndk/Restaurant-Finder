@@ -14,6 +14,7 @@ import { ViewRestaurantbyIdComponent } from './view-restaurantby-id/view-restaur
 import { AuthGuard } from './auth.guard';
 import { ReviewFormComponent } from './review-form/review-form.component';
 import { ChatAppComponent } from './chat-app/chat-app.component';
+import { ViewReviewsComponent } from './view-reviews/view-reviews.component';
 
 const routes: Routes =[
     { path: 'home',             component: HomeComponent },
@@ -29,7 +30,12 @@ const routes: Routes =[
                 path: 'AddReview',
                 component: ReviewFormComponent,
                 canActivate:[AuthGuard]
-            }]
+            },
+            {
+                path: 'ViewReview',
+                component: ViewReviewsComponent
+            }
+          ]
           },
     { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];

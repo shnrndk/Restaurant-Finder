@@ -37,6 +37,11 @@ export class RestaurantServiceService {
       let url="http://localhost:3000/reviews/add";
       return this.http.post<any>(url,reviewData);
    }
+
+   viewReview(reg_no){
+     let url = `http://localhost:3000/reviews/viewbyid/${reg_no}`;
+     return this.http.get<any>(url);
+   }
 /*
   upload(restaurantData){                                   //Post the approved family details
     console.log(restaurantData)

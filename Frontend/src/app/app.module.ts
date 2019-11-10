@@ -41,6 +41,7 @@ import { ReviewFormComponent } from './review-form/review-form.component';
 import { MaterialFileUploadComponent } from './material-file-upload/material-file-upload.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { ChatAppComponent } from './chat-app/chat-app.component';
+import { ViewReviewsComponent } from './view-reviews/view-reviews.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { ChatAppComponent } from './chat-app/chat-app.component';
     ReviewFormComponent,
     MaterialFileUploadComponent,
     ChatAppComponent,
+    ViewReviewsComponent,
   ],
   imports: [
     BrowserModule,

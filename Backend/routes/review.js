@@ -26,8 +26,8 @@ router.get('/view', (req, res) => {
 
 
 
-router.get('/viewbyid/:id', (req, res) => {
-    Reviews.find({ reg_no: req.params.id }, (err, doc) => {
+router.get('/viewbyid/:reg_no', (req, res) => {
+    Reviews.find({ reg_no: req.params.reg_no }, (err, doc) => {
 
         if (doc.length) {
             res.send(doc);

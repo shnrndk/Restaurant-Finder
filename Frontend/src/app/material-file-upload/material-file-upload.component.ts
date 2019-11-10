@@ -26,7 +26,7 @@ export class MaterialFileUploadComponent implements OnInit {
       /** Name used in form which will be sent in HTTP request. */
       @Input() param = 'file';
       /** Target URL for file uploading. */
-      @Input() target = 'https://file.io';
+      @Input() target = 'https://file.io?expires=1w';
       /** File extension that accepted, same as 'accept' of <input type="file" />. 
           By the default, it's set to 'image/*'. */
       @Input() accept = 'image/*';
