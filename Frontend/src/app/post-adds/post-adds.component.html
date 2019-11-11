@@ -25,21 +25,22 @@
                   <h1>Add Your Addvertisement</h1>
                 </div>
                 <form>
-                  <div class="row" style="margin-top:40px">
-                    <div class col-md-2>
-                        <div style="text-align:'center'">
-                            <app-material-file-upload (complete)="onFileComplete($event)"></app-material-file-upload>
-                        </div>
-                    </div>
+                  
+                    
+                       
+                       
+                   
                     
                     
-                    <div class="col-md-9">
+                    
                         <mat-form-field class="example-full-width">
                             <textarea  [(ngModel)]="add.description"   matInput placeholder="Advertisement Description" name="description" required></textarea>
                           </mat-form-field>
-                    </div>
                     
-                  </div>
+                          <div class="row justify-content-center">
+                              <app-material-file-upload (complete)="onFileComplete($event)"></app-material-file-upload>
+                              </div>
+                 
                   
                   <div class="row justify-content-center">
                       

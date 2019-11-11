@@ -13,7 +13,10 @@ export class RegisterRestaurantComponent implements OnInit {
   restaurantForm: FormGroup;
   submitted = false;
   success = false;
-
+  url;
+  latitude = 6.7876072;
+  longitude = 79.8838391;
+  locationChosen = false;
   fooditems = [{ fooditem: "Sri Lankan" }, { fooditem: "Arabian" }, { fooditem: "Western" }, { fooditem: 'Indian' }, { fooditem: 'Vegetarian' }]
 
   constructor(private formBuilder: FormBuilder, private restaurantService: RestaurantServiceService,private router: Router,private _snackBar: MatSnackBar) { }
@@ -29,6 +32,7 @@ export class RegisterRestaurantComponent implements OnInit {
       "streetAddress2":[''],
       "city":['',Validators.required],
       "phone_no": ['',Validators.required],
+      "email": ['',Validators.required],
       "food_types":this.formBuilder.array([])
     });
     this.restaurantForm.valueChanges.subscribe(console.log)
@@ -42,10 +46,15 @@ export class RegisterRestaurantComponent implements OnInit {
       return;
    }
 
-   if (this.restaurantForm.value['owner_pics']==undefined) {
-     this.openSnackBar("Please Upload An Image");
+   if (this.restaurantForm.value['owner_pics']==undefined && this.url==undefined) {
+     console.log("fskf")
     return;
- }
+    }
+    
+    this.restaurantForm.value['owner_pics']=this.url;
+    this.restaurantForm.value['latitude']=this.latitude;
+    this.restaurantForm.value['longitude']=this.longitude;
+
   
    console.log(this.restaurantForm.value)
     this.restaurantService.add(this.restaurantForm.value)
@@ -66,8 +75,13 @@ export class RegisterRestaurantComponent implements OnInit {
   
   onFileComplete(data: any) {
     console.log(data); // We just print out data bubbled up from event emitter.
+    if(data==undefined){
+      this.openSnackBar("Please Upload Your Image again");
+    }
+    this.url = data['url']
     this.restaurantForm.value['owner_pics'] = data['url']
     console.log(this.restaurantForm.value)
+    
   }
 
   onChange(email: string, isChecked: boolean) {
@@ -80,6 +94,14 @@ export class RegisterRestaurantComponent implements OnInit {
       let index = emailFormArray.controls.findIndex(x => x.value == email)
       emailFormArray.removeAt(index);
     }
+  }
+
+  onChoseLocation(event) {
+    this.latitude = event.coords.lat;
+    this.longitude = event.coords.lng;
+    this.locationChosen = true;
+    this.restaurantForm.value['latitude']=this.latitude;
+    this.restaurantForm.value['longitude']=this.longitude;
   }
 
 }

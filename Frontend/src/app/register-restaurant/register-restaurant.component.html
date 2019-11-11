@@ -70,7 +70,7 @@
 
                   <div class="col-md-5">
                     <mat-form-field>
-                      <input matInput placeholder="NIC" type="number" formControlName="NIC">
+                      <input matInput placeholder="NIC" type="number" formControlName="NIC" maxlength="9">
                       <div *ngIf="submitted && restaurantForm.controls.NIC.errors" class="error">
                           <div *ngIf="restaurantForm.controls.NIC.errors.required" style="color:red">This field is required</div>
                       </div>
@@ -112,13 +112,19 @@
                       </div>
                     </mat-form-field>
                   </div>
+                  <div class="col-md-6">
+                      <mat-form-field>
+                        <input matInput placeholder="Email" type="text" formControlName="email">
+                        <div *ngIf="submitted && restaurantForm.controls.email.errors" class="error">
+                            <div *ngIf="restaurantForm.controls.phone_no.errors.required" style="color:red">This field is required</div>
+                        </div>
+                      </mat-form-field>
+                    </div>
                 
                   
             
 
-                  <div style="text-align:center">
-                      <app-material-file-upload (complete)="onFileComplete($event)"></app-material-file-upload>
-                  </div>
+                  
                 
                 </div>
 
@@ -128,8 +134,21 @@
                     <br>
                 </div>
                 <div class="row justify-content-center">
-                  <input type="submit" value="Submit details" class="btn btn-primary">
+                <agm-map [latitude]="latitude" [longitude]="longitude" (mapClick)="onChoseLocation($event)" style="text-align:center">
+                    <agm-marker
+                      [latitude]="latitude"
+                      [longitude]="longitude"
+                      *ngIf="locationChosen"></agm-marker>
+                </agm-map>
+              </div>
+
+                <div style="text-align:center; margin-top:20px">
+                    <app-material-file-upload (complete)="onFileComplete($event)"></app-material-file-upload>
                 </div>
+
+                <div class="row justify-content-center" style="margin-top:20px">
+                    <input type="submit" value="Submit details" class="btn btn-primary">
+                  </div>
 
               </form>
             </div>

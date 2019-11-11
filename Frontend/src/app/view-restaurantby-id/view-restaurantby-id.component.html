@@ -65,14 +65,20 @@
             <div *ngFor="let restaurant of restaurants">
 
 
-              <div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i>Hotel Name -
-                {{restaurant.restaurant_name}}</div>
+              <div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i><b>Hotel Name -
+                  {{restaurant.restaurant_name}}</b></div>
               <div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i>Owner - {{restaurant.owner_name}}</div>
               <div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i>Contact No - {{restaurant.phone_no}}
               </div>
-              <div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i>Address -
-                {{restaurant.streetAddress1}}/{{restaurant.city}}</div>
+              <div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i>Address -{{restaurant.streetAddress1}}/{{restaurant.city}}</div>
+              <div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i>Email  - {{restaurant.email}}</div>
+              <div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i>Available Food Types  - {{restaurant.food_types}}</div>
 
+              <div class="row justify-content-center">
+              <agm-map [latitude]="lat" [longitude]="lng">
+                  <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                </agm-map>
+              </div>
             </div>
             <br>
             <br>

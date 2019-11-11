@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RestaurantServiceService } from '../restaurant-service.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-post-adds',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class PostAddsComponent implements OnInit {
 
-  constructor(private restaurantservice: RestaurantServiceService,private router : Router) { }
+  constructor(private restaurantservice: RestaurantServiceService,private router : Router,private _snackBar: MatSnackBar) { }
 
   add={}
 
@@ -26,6 +27,7 @@ export class PostAddsComponent implements OnInit {
           else console.log("Success No Errors")
         }
     )
+    this.openSnackBar("Your Add Has been Posted")
   }
 
 
@@ -34,5 +36,11 @@ export class PostAddsComponent implements OnInit {
     this.add['addImage'] = data['url']
     
   }
+
+  openSnackBar(msg) {
+    this._snackBar.open(msg,"OK");
+    this.router.navigate(['']);
+  }
+  
 
 }

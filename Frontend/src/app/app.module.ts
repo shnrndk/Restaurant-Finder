@@ -44,7 +44,7 @@ import { ChatAppComponent } from './chat-app/chat-app.component';
 import { ViewReviewsComponent } from './view-reviews/view-reviews.component';
 import { ContactAdminComponent } from './contact-admin/contact-admin.component';
 import { PostAddsComponent } from './post-adds/post-adds.component';
-
+import { AgmCoreModule } from '@agm/core';
 @NgModule({
   declarations: [
     AppComponent,
@@ -89,7 +89,9 @@ import { PostAddsComponent } from './post-adds/post-adds.component';
     FormsModule,
     MatProgressBarModule,
     MatCheckboxModule,
-    
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCsXYtv6Q8JjojhHD7V0L6H8fNUjRohqlU'
+    })
   
   ],
   providers: [AuthService,AuthGuard,EventService],

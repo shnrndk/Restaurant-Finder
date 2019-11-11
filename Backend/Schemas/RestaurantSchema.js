@@ -13,7 +13,10 @@ var Restaurant = new Schema({
     //"district":String,
     "phone_no": {type:String,required:true},
     "owner_pics":{type:String,required:true},
-    "food_types":[String]
+    "email":{type:String,required:true},
+    "food_types":[String],
+    "longitude":String,
+    "latitude":String
     
 }, { collection: 'RestaurantDetails' });
 
