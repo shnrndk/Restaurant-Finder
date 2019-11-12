@@ -32,6 +32,19 @@ export class RestaurantServiceService {
     let url = `http://localhost:3000/restaurants/searchByCity/${searchdata}`
     return this.http.get<Restaurant>(url);
    }
+/*
+   searchByFilters(searchdata){
+    delete searchdata['filters']
+    let url = `http://localhost:3000/restaurants/searchByFilters/${searchdata}`
+    console.log(searchdata);
+    return this.http.get<Restaurant>(url);
+   }*/
+
+   searchByFilters(searchdata){     
+    let url= "http://localhost:3000/restaurants/searchByFilters";                              //Post the approved family details
+    console.log(searchdata)
+    return this.http.post<Restaurant>(url,searchdata);
+   }
 
    viewById(reg_no){
      let url = `http://localhost:3000/restaurants/viewbyid/${reg_no}`

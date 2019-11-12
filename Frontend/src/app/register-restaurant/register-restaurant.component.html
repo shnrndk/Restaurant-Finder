@@ -127,12 +127,54 @@
                   
                 
                 </div>
-
-                <b>Available Food Items</b>
-                <div *ngFor="let data of fooditems">
-                    <input type="checkbox" (change)="onChange(data.fooditem, $event.target.checked)"> {{data.fooditem}}
+                <div class="row">
+                  <div class="col-md-6">
+                  <b>Available Food Items</b>
+                      <div *ngFor="let data of fooditems">
+                          <input type="checkbox" (change)="onChange(data.fooditem, $event.target.checked)"> {{data.fooditem}}
+                          <br>
+                      </div>
+                  </div>
+                  <div class="col-md-6">
+                    <b>Available Facilities</b>
                     <br>
+                        <input type="checkbox" formControlName="wifi">  WIFI<br>
+                        <input type="checkbox" formControlName="parking"  [(ngModel)]="parking" name="parking">  Parking  <mat-form-field *ngIf="checkParking()">
+                                                                                        <input matInput placeholder="Number of Vehicles can be parked" type="number" formControlName="parking_slots">
+                                                                                     </mat-form-field><br>
+                        <input type="checkbox" formControlName="child_care">  Child Care<br>
+                        <input type="checkbox" formControlName="liquor">  Liquor<br>
+                        <input type="checkbox" formControlName="familyrestaurant">  Family Restaurant<br>
+                        <input type="checkbox" formControlName="beachfront">  Beach Front<br>
+                        <input type="checkbox" formControlName="wheelchair">  Wheel Chair Accessible<br>
+                        <input type="checkbox" formControlName="delivery">  Delivery<br>
+                    </div>
                 </div>
+                <div class="row">
+                <b>Opening Hours</b>
+                <div class="col-md-2">
+                    <mat-form-field>
+                      <mat-label>Opening Time</mat-label>
+                      <select matNativeControl name="car" formControlName="openinghrs">
+                        <option value="" selected></option>
+                        <option *ngFor="let time of times" [value]="time">
+                          {{time}}
+                        </option>
+                      </select>
+                    </mat-form-field>
+                </div> 
+                <div class="col-md-2">
+                  <mat-form-field>
+                    <mat-label>Closing Time</mat-label>
+                    <select matNativeControl name="car" formControlName="closinghrs">
+                      <option value="" selected></option>
+                      <option *ngFor="let time of times" [value]="time">
+                        {{time}}
+                      </option>
+                    </select>
+                  </mat-form-field>
+                </div>
+              </div>
                 <div class="row justify-content-center">
                 <agm-map [latitude]="latitude" [longitude]="longitude" (mapClick)="onChoseLocation($event)" style="text-align:center">
                     <agm-marker

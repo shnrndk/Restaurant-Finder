@@ -16,7 +16,17 @@ var Restaurant = new Schema({
     "email":{type:String,required:true},
     "food_types":[String],
     "longitude":String,
-    "latitude":String
+    "latitude":String,
+    "wifi":Boolean,
+    "parking":Boolean,
+    "parking_slots":Number,
+    "child_care":Boolean,
+    "liquor":Boolean,
+    "familyrestaurant":Boolean,
+    "beachfront":Boolean,
+    "wheelchair":Boolean,
+    "delivery":Boolean,
+    "opening_hours":String
     
 }, { collection: 'RestaurantDetails' });
 

@@ -11,13 +11,15 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 export class RegisterRestaurantComponent implements OnInit {
 
   restaurantForm: FormGroup;
+  parking;
   submitted = false;
   success = false;
   url;
   latitude = 6.7876072;
   longitude = 79.8838391;
   locationChosen = false;
-  fooditems = [{ fooditem: "Sri Lankan" }, { fooditem: "Arabian" }, { fooditem: "Western" }, { fooditem: 'Indian' }, { fooditem: 'Vegetarian' }]
+  fooditems = [{ fooditem: "Sri Lankan" }, { fooditem: "Arabian" }, { fooditem: "Western" }, { fooditem: 'Indian' }, { fooditem: 'Vegetarian' }];
+  times = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24];
 
   constructor(private formBuilder: FormBuilder, private restaurantService: RestaurantServiceService,private router: Router,private _snackBar: MatSnackBar) { }
 
@@ -33,9 +35,21 @@ export class RegisterRestaurantComponent implements OnInit {
       "city":['',Validators.required],
       "phone_no": ['',Validators.required],
       "email": ['',Validators.required],
-      "food_types":this.formBuilder.array([])
+      "food_types":this.formBuilder.array([]),
+      "wifi":[false],
+      "parking":[''],
+      "parking_slots":[false],
+      "child_care":[false],
+      "liquor":[false],
+      "familyrestaurant":[false],
+      "beachfront":[false],
+      "wheelchair":[false],
+      "delivery":[false],
+      "openinghrs":[false],
+      "closinghrs":[false]
     });
     this.restaurantForm.valueChanges.subscribe(console.log)
+    
   }
 
   onSubmit() {
@@ -50,12 +64,29 @@ export class RegisterRestaurantComponent implements OnInit {
      console.log("fskf")
     return;
     }
+
+    if(this.restaurantForm.value['openinghrs']==undefined || this.restaurantForm.value['closinghrs']==undefined){
+      console.log("fsdka")
+    }else{
+      this.restaurantForm.value['opening_hours']=`${this.restaurantForm.value['openinghrs']}-${this.restaurantForm.value['closinghrs']}`
+      delete this.restaurantForm.value['openinghrs']
+      delete this.restaurantForm.value['closinghrs']
+    }
     
     this.restaurantForm.value['owner_pics']=this.url;
     this.restaurantForm.value['latitude']=this.latitude;
     this.restaurantForm.value['longitude']=this.longitude;
+/*
+    if(this.restaurantForm.value['wifi']='') { this.restaurantForm.value['wifi']='false' }
+    if(this.restaurantForm.value['parking']='') { this.restaurantForm.value['parking']='false' }
+    if(this.restaurantForm.value['parking_slots']='') { this.restaurantForm.value['parking_slots']='false' }
+    if(this.restaurantForm.value['child_care']='') { this.restaurantForm.value['child_care']='false' }
+    if(this.restaurantForm.value['liquor']='') { this.restaurantForm.value['liquor']='false' }
+    if(this.restaurantForm.value['familyrestaurant']='') { this.restaurantForm.value['familyrestaurant']='false' }
+    if(this.restaurantForm.value['beachfront']='') { this.restaurantForm.value['beachfront']='false' }
+    if(this.restaurantForm.value['wheelchair']='') { this.restaurantForm.value['wheelchair']='false' }
+*/
 
-  
    console.log(this.restaurantForm.value)
     this.restaurantService.add(this.restaurantForm.value)
       .subscribe(
@@ -102,6 +133,14 @@ export class RegisterRestaurantComponent implements OnInit {
     this.locationChosen = true;
     this.restaurantForm.value['latitude']=this.latitude;
     this.restaurantForm.value['longitude']=this.longitude;
+  }
+
+  checkParking(){
+    if((this.parking==true)){
+      return true
+    }else{
+      return false
+    }
   }
 
 }

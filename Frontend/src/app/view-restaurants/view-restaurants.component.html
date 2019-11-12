@@ -34,9 +34,40 @@
               <mat-form-field class="example-full-width">
                 <input matInput placeholder="Search" formControlName="searchdata">
               </mat-form-field>
+              <input type="checkbox" [(ngModel)]="filters" formControlName="filters"> Search With Advanced Filters<br>
+              <div class="row" *ngIf="checkFilters()">
+                <div class="col-md-6">
+                    
+                <b>Available Food Items</b>
+                      <br>
+                      <input type="checkbox" formControlName="SriLankan">  Sri Lankan<br>
+                      <input type="checkbox" formControlName="Arabian"> Arabian<br>
+                      <input type="checkbox" formControlName="Western">  Western<br>
+                      <input type="checkbox" formControlName="Indian">  Indian<br>
+                      <input type="checkbox" formControlName="Vegetarian"> Vegetarian<br>
+                        <br>
+                  
+                </div>
+                <div class="col-md-6">
+                  <b>Available Facilities</b>
+                  <br>
+                      <input type="checkbox" formControlName="wifi">  WIFI<br>
+                      <input type="checkbox" formControlName="parking"> Parking<br>
+                      <input type="checkbox" formControlName="child_care">  Child Care<br>
+                      <input type="checkbox" formControlName="liquor">  Liquor<br>
+                      <input type="checkbox" formControlName="familyrestaurant">  Family Restaurant<br>
+                      <input type="checkbox" formControlName="beachfront">  Beach Front<br>
+                      <input type="checkbox" formControlName="wheelchair">  Wheel Chair Accessible<br>
+                      <input type="checkbox" formControlName="delivery">  Delivery<br>
+                  </div>
+              </div>
+              <br>
+              <br>
+
               <div class="row justify-content-center">
-                  <input type="submit" value="Search By Name" class="btn btn-primary">
-                  <input type="submit" value="Search By City" class="btn btn-primary">
+                  <input type="submit" value="Search By Name" class="btn btn-primary" *ngIf="!checkFilters()">
+                  <input type="submit" value="Search By City" class="btn btn-primary" *ngIf="!checkFilters()">
+                  <input type="submit" value="Search By Filters" class="btn btn-primary" *ngIf="checkFilters()">
                 </div>
 
             </form>
