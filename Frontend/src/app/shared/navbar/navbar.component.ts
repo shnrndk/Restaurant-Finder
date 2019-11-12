@@ -72,7 +72,7 @@ export class NavbarComponent implements OnInit {
     }
 
     changeInterface(){
-        if(localStorage.getItem['userstatus']="Restaurant Owner"){
+        if(localStorage.getItem['userstatus']=="Restaurant Owner"){
             return true;
         }else{
             return false;

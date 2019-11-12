@@ -4,7 +4,7 @@ var Restaurant = require('../Schemas/RestaurantSchema');
 var mongoose = require('mongoose');
 const multer = require('multer');
 var cloudinary = require('cloudinary').v2;
-
+var nodemailer = require('nodemailer');
 cloudinary.config({
     cloud_name: 'datla6jwf',
     api_key: '327471161541859',
@@ -112,6 +112,56 @@ router.get('/search/:searchdata', (req, res) => {
 });
 
 
+router.get('/searchandRequest/:searchdata', (req, res) => {
+    searchdata = req.params.searchdata;
+    console.log(searchdata)
+        Restaurant.find({
+            restaurant_name: new RegExp(searchdata, 'i')
+        }, (err, doc) => {
+            if (doc.length) {
+                res.status(200).send(doc);
+            } else {
+                console.log('Cannot find the record');
+                res.status(201).send(doc);
+            }
+        });
+    
+});
+
+router.post('/sendEmail', async(req, res) => {
+    
+    console.log(req.body);
+    var transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+          user: 'restfind456@gmail.com',
+          pass: 'restaurantadmin'
+        }
+      });
+      
+      var mailOptions = {
+        from: 'restfind456@gmail.com',
+        to: 'shnrndk@gmail.com',
+        subject: 'Request To Add new Restaurant',
+        text: `${req.body['yourname']} has requested to Add this Restaurant
+                        Restaurant Name: ${req.body['restaurant_name']}
+                        Address : ${req.body['address']}
+                        Email : ${req.body['email']}
+                        Owner Name: ${req.body['owner_name']}
+                        Request Customer Name: ${req.body['yourname']}
+                        
+                `
+      };
+      
+      transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
+
+});
 router.get('/searchByCity/:searchdata', (req, res) => {
     searchdata = req.params.searchdata;
     console.log(searchdata)

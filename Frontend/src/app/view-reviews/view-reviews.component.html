@@ -25,14 +25,16 @@
                       <thead>
                         <tr>
                           <th scope="col">Review</th>
-                          <th scope="col">Username</th>
+                          <th scope="col">Rating</th>
+                          <th scope="col">Name</th>
                           <th scope="col">Images</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr *ngFor="let review of reviews">
                           <td>{{review.review}}</td>
-                          <td>{{review.email}}</td>
+                          <td><b>{{review.rating}} Stars</b></td>
+                          <td>{{review.name}} </td>
                           <td><img src="{{review.pics[0]}}" class="rounded" style="width : 200px; height: auto;">
                             <img src="{{review.pics[1]}}" class="rounded" style="width : 200px; height: auto;">
                             <img src="{{review.pics[2]}}" class="rounded" style="width : 200px; height: auto;">

@@ -13,6 +13,7 @@ export class ViewReviewsComponent implements OnInit {
 
   reg_no;
   reviews;
+  nums = [1,2,3,4,5]
 
   ngOnInit() {
     this.reg_no = this.getRegNo()

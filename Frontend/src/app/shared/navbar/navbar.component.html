@@ -65,6 +65,11 @@
               <i class="fa fa-plus" aria-hidden="true"></i>Register Restaurant
             </button>
         </li>
+        <li class="nav-item" *ngIf="!changeInterface()">
+          <button mat-flat-button color="primary"  [routerLink]="['/requestToAdd']">
+            <i class="fa fa-plus" aria-hidden="true"></i>Request To Add Restuarant
+          </button>
+      </li>
         <li class="nav-item" *ngIf="changeInterface()">
             <button mat-flat-button color="primary"  [routerLink]="['/postAdds']">
               <i class="fa fa-picture-o" aria-hidden="true"></i>Post An Add

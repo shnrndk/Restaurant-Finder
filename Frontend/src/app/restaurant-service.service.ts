@@ -78,5 +78,16 @@ export class RestaurantServiceService {
     return this.http.post<Restaurant>(url,information);
    }
 
+   searchandRequest(searchdata){
+     console.log(searchdata)
+    let url = `http://localhost:3000/restaurants/searchandRequest/${searchdata}`
+    return this.http.get<Restaurant>(url,{observe : 'response'});
+   }
+
+   sendRequest(information){
+    console.log(information)
+    let url = `http://localhost:3000/restaurants/sendEmail/`
+    return this.http.post<Restaurant>(url,information);
+   }
 
 }

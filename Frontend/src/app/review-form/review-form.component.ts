@@ -15,16 +15,21 @@ export class ReviewFormComponent implements OnInit {
   reg_no;
   array=[]
   imagecount=0;
-  restaurantData={}
+  restaurantData={};
+  restuarantName;
+   Name;
+  rating = 0;
   constructor(private formBuilder: FormBuilder, private restaurantService: RestaurantServiceService,private router : Router,private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.reg_no = this.getRegNo();
 
     this.reviewForm = this.formBuilder.group({
-      "review": ['',Validators.required]
+      "review": ['',Validators.required],
+      "rating": ['',Validators.required]
     });
     this.reviewForm.valueChanges.subscribe(console.log)
+    this.Name = localStorage.getItem('name');
 
   }
   onFileComplete(data: any) {
@@ -57,7 +62,7 @@ export class ReviewFormComponent implements OnInit {
 
   
    console.log(this.reviewForm.value)
-    this.reviewForm.value['email']=localStorage.getItem('username')
+    this.reviewForm.value['name']=localStorage.getItem('name')
     this.restaurantService.addReview(this.reviewForm.value)
       .subscribe(
         response=>console.log('Success!',response),

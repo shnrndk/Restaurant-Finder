@@ -45,6 +45,7 @@ import { ViewReviewsComponent } from './view-reviews/view-reviews.component';
 import { ContactAdminComponent } from './contact-admin/contact-admin.component';
 import { PostAddsComponent } from './post-adds/post-adds.component';
 import { AgmCoreModule } from '@agm/core';
+import { RequestToAddRestaurantComponent } from './request-to-add-restaurant/request-to-add-restaurant.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,6 +63,7 @@ import { AgmCoreModule } from '@agm/core';
     ViewReviewsComponent,
     ContactAdminComponent,
     PostAddsComponent,
+    RequestToAddRestaurantComponent,
     
   ],
   imports: [
