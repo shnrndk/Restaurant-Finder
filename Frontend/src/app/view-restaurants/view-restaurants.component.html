@@ -73,7 +73,7 @@
             </form>
             <br>
             <div class="row justify-content-center">
-                <input type="button" value="Sort By Ratings" class="btn btn-primary" *ngIf="!checkFilters()">
+                <input type="button" value="Sort By Ratings" (click)="getResults()" class="btn btn-primary" *ngIf="!checkFilters()">
             </div>
             <div class="container" style="margin-top: 30px;">
               <div class="row justify-content-center">
@@ -84,6 +84,7 @@
                         <th scope="col">Registration No</th>
                         <th scope="col">Hotel Name</th>
                         <th scope="col">Address</th>
+                        <th scope="col">Rating(Stars)</th>
                         <th scope="col">City</th>
                         <th scope="col">Phone No</th>
                       </tr>
@@ -93,6 +94,7 @@
                         <td>{{restaurant.reg_no}}</td>
                         <td>{{restaurant.restaurant_name}}</td>
                         <td>{{restaurant.streetAddress1}}</td>
+                        <td><b>{{restaurant.rating}}</b></td>
                         <td>{{restaurant.city}}</td>
                         <td>{{restaurant.phone_no}}</td>
                       </tr>

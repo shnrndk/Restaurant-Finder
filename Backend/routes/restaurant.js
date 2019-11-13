@@ -22,26 +22,6 @@ router.post('/add', async (req, res) => {
         err => res.status(401).send(err)
     });
     console.log("Completed");
-    /*
-        try {
-            
-            const update = req.body;
-
-            let filter = await Restaurant.find().sort({ _id: -1 }).limit(1)
-            
-            mongoose.set('useFindAndModify', false);
-            //await Restaurant.countDocuments(filter[{}]); // 0
-            await console.log(filter[0])
-            let doc = await Restaurant.findOneAndUpdate(filter, update, {
-                new: true,
-                upsert: false // Make this update into an upsert
-            });
-            res.status(201).send(doc)
-            //console.log(doc);
-        } catch (error) {
-            res.status(500).send(error);
-            console.log(error);
-        }*/
 });
 
 const storage = multer.diskStorage({
@@ -86,6 +66,15 @@ router.get('/view', (req, res) => {
         res.send(doc)
     })
 
+});
+
+router.get('/sort', (req, res) => {
+    console.log("dfa")
+    Restaurant.find().sort({"rating":-1}).exec(function(err, doc) { 
+            res.send(doc)
+        }
+        
+     );
 });
 
 

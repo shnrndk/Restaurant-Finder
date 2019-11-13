@@ -15,6 +15,7 @@ var Restaurant = new Schema({
     "owner_pics":{type:String,required:true},
     "email":{type:String,required:true},
     "food_types":[String],
+    "rating":Number,
     "longitude":String,
     "latitude":String,
     "wifi":Boolean,

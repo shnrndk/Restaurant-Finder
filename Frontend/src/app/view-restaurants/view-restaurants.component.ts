@@ -86,4 +86,9 @@ export class ViewRestaurantsComponent implements OnInit {
       return false
     }
   }
+  getResults(){
+    this.restaurantservice.getSortedRatings().subscribe(
+      data => this.restaurants = data
+    )
+  }
 }

@@ -90,4 +90,9 @@ export class RestaurantServiceService {
     return this.http.post<Restaurant>(url,information);
    }
 
+   getSortedRatings(){
+    let url = "http://localhost:3000/restaurants/sort";
+    return this.http.get<Restaurant>(url)
+   }
+
 }
