@@ -196,13 +196,7 @@ router.post('/searchByFilters', (req, res) => {
                 }]
             },
             (err, doc) => {
-                if (doc.length) {
-                    res.send(doc);
-                    console.log(doc);
-                } else {
-                    console.log('Cannot find the record');
-                    res.status(500).send("Cannot find the record");
-                }
+               res.send(doc)
             });
             
     
