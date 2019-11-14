@@ -6,6 +6,7 @@ import { RestaurantServiceService } from '../restaurant-service.service';
 import { Router } from '@angular/router';
 import { Restaurant } from '../Models/Restaurant.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
 
 
 /**
@@ -18,7 +19,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ViewRestaurantsComponent implements OnInit {
 
-  constructor(private restaurantservice: RestaurantServiceService, private formBuilder: FormBuilder, private router : Router) { }
+  constructor(private restaurantservice: RestaurantServiceService, private formBuilder: FormBuilder, private router : Router,private _snackBar : MatSnackBar) { }
 
   restaurants : Restaurant;
   searchForm: FormGroup;
@@ -36,11 +37,7 @@ export class ViewRestaurantsComponent implements OnInit {
       "beachfront":[false],
       "wheelchair":[false],
       "delivery":[false],
-      "SriLankan":[false],
-      "Arabian":[false],
-      "Western":[false],
-      "Indian":[false],
-      "Vegetarian":[false],
+      "food_types":[false],
       "filters":[false]
     });
     this.searchForm.valueChanges.subscribe(console.log)
@@ -51,6 +48,7 @@ export class ViewRestaurantsComponent implements OnInit {
     
     if(this.searchForm.value['searchdata'].length==0){
       this.searchForm.value['searchdata']=0;
+      
     }
     
       if(this.filters==false){
@@ -75,6 +73,9 @@ export class ViewRestaurantsComponent implements OnInit {
       }
 
   }
+  openSnackBar(msg) {
+    this._snackBar.open(msg,"OK");
+  }
 
   onClick(reg_no){
     this.router.navigate(['ViewRestaurantById',reg_no])
@@ -86,9 +87,15 @@ export class ViewRestaurantsComponent implements OnInit {
       return false
     }
   }
+
+
   getResults(){
     this.restaurantservice.getSortedRatings().subscribe(
       data => this.restaurants = data
     )
+  }
+
+  clearResults(){
+    this.restaurantservice.view().subscribe(data => this.restaurants = data);
   }
 }

@@ -62,7 +62,7 @@ export class NavbarComponent implements OnInit {
     }
 
     openSnackBar() {
-        this._snackBar.openFromComponent(ChatAppComponent, {
+        let sheetRef = this._snackBar.openFromComponent(ChatAppComponent, {
           //duration: 2000,
           // here specify the position
           verticalPosition: 'bottom',
@@ -72,7 +72,7 @@ export class NavbarComponent implements OnInit {
     }
 
     changeInterface(){
-        if(localStorage.getItem['userstatus']=="Restaurant Owner"){
+        if(localStorage.getItem('userstatus')=="Restaurant Owner"){
             return true;
         }else{
             return false;

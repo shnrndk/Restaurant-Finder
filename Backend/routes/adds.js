@@ -27,7 +27,7 @@ router.post('/sendEmail', async(req, res) => {
       
       var mailOptions = {
         from: 'restfind456@gmail.com',
-        to: 'shnrndk@gmail.com',
+        to: 'restfind321@gmail.com',
         subject: 'Request From The Customer',
         text: `${req.body['email']} has requested below information
 

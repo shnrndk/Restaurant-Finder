@@ -34,23 +34,36 @@
               <mat-form-field class="example-full-width">
                 <input matInput placeholder="Search" formControlName="searchdata">
               </mat-form-field>
-              <input type="checkbox" [(ngModel)]="filters" formControlName="filters"> Search With Advanced Filters<br>
+              <!--<input type="checkbox" [(ngModel)]="filters" formControlName="filters"> Search With Advanced Filters<br>-->
+              <mat-checkbox [(ngModel)]="filters" formControlName="filters">Search With Advanced Filters</mat-checkbox><br>
               <div class="row" *ngIf="checkFilters()">
                 <div class="col-md-6">
                     
                 <b>Available Food Items</b>
-                      <br>
-                      <input type="checkbox" formControlName="SriLankan">  Sri Lankan<br>
-                      <input type="checkbox" formControlName="Arabian"> Arabian<br>
-                      <input type="checkbox" formControlName="Western">  Western<br>
-                      <input type="checkbox" formControlName="Indian">  Indian<br>
-                      <input type="checkbox" formControlName="Vegetarian"> Vegetarian<br>
-                        <br>
+                <!--
+                                        <br>
+                      <input type="radio" formControlName="food_types">  Sri Lankan<br>
+                      <input type="radio" formControlName="food_types"> Arabian<br>
+                      <input type="radio" formControlName="food_types">  Western<br>
+                      <input type="radio" formControlName="food_types">  Indian<br>
+                      <input type="radio" formControlName="food_types"> Vegetarian<br>
+                        <br> -->
+
+                        
+                        <mat-radio-group aria-label="Available Food Items" formControlName="food_types"><br>
+                          <mat-radio-button value="SriLankan">Sri Lankan</mat-radio-button><br>
+                          <mat-radio-button value="Arabian">Arabian</mat-radio-button><br>
+                          <mat-radio-button value="Western">Western</mat-radio-button><br>
+                          <mat-radio-button value="Indian">Indian</mat-radio-button><br>
+                          <mat-radio-button value="Vegetarian">Vegetarian</mat-radio-button><br>
+                        </mat-radio-group>
                   
                 </div>
+                
                 <div class="col-md-6">
                   <b>Available Facilities</b>
                   <br>
+                  <!--
                       <input type="checkbox" formControlName="wifi">  WIFI<br>
                       <input type="checkbox" formControlName="parking"> Parking<br>
                       <input type="checkbox" formControlName="child_care">  Child Care<br>
@@ -58,7 +71,17 @@
                       <input type="checkbox" formControlName="familyrestaurant">  Family Restaurant<br>
                       <input type="checkbox" formControlName="beachfront">  Beach Front<br>
                       <input type="checkbox" formControlName="wheelchair">  Wheel Chair Accessible<br>
-                      <input type="checkbox" formControlName="delivery">  Delivery<br>
+                      <input type="checkbox" formControlName="delivery">  Delivery<br>-->
+
+                      <mat-checkbox formControlName="wifi">WIFI</mat-checkbox><br>
+                      <mat-checkbox formControlName="parking">Parking</mat-checkbox><br>
+                      <mat-checkbox formControlName="child_care">Child Care</mat-checkbox><br>
+                      <mat-checkbox formControlName="liquor">Liquor</mat-checkbox><br>
+                      <mat-checkbox formControlName="familyrestaurant">Family Restaurant</mat-checkbox><br>
+                      <mat-checkbox formControlName="beachfront">Beach Front</mat-checkbox><br>
+                      <mat-checkbox formControlName="wheelchair">Wheel Chair Accessible</mat-checkbox><br>
+                      <mat-checkbox formControlName="delivery">Delivery</mat-checkbox><br>
+
                   </div>
               </div>
               <br>
@@ -74,6 +97,7 @@
             <br>
             <div class="row justify-content-center">
                 <input type="button" value="Sort By Ratings" (click)="getResults()" class="btn btn-primary" *ngIf="!checkFilters()">
+                <input type="button" value="Clear Search" (click)="clearResults()" class="btn btn-primary" *ngIf="checkFilters()">
             </div>
             <div class="container" style="margin-top: 30px;">
               <div class="row justify-content-center">

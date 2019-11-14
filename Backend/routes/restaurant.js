@@ -130,7 +130,7 @@ router.post('/sendEmail', async(req, res) => {
       
       var mailOptions = {
         from: 'restfind456@gmail.com',
-        to: 'shnrndk@gmail.com',
+        to: 'restfind321@gmail.com',
         subject: 'Request To Add new Restaurant',
         text: `${req.body['yourname']} has requested to Add this Restaurant
                         Restaurant Name: ${req.body['restaurant_name']}
@@ -179,22 +179,21 @@ router.get('/searchByCity/:searchdata', (req, res) => {
 router.post('/searchByFilters', (req, res) => {
     searchdata = req.body;
     console.log(searchdata)
-    if (searchdata['searchdata'] == '0') {
-        Restaurant.find((err, doc) => {
-            res.send(doc)
-        })
-    } else {
+   
         
         Restaurant.find({
-                city: new RegExp(searchdata['searchdata'], 'i'),
-                wifi: searchdata['wifi'],
-                parking: searchdata['parking'],
-                child_care: searchdata['child_care'],
-                liquor: searchdata['liquor'],
-                familyrestaurant: searchdata['familyrestaurant'],
-                beachfront: searchdata['beachfront'],
-                wheelchair: searchdata['wheelchair'],
-                delivery: searchdata['delivery']
+                $or:[{city: new RegExp(searchdata['searchdata'], 'i')},
+                {
+                    wifi: searchdata['wifi'],
+                    parking: searchdata['parking'],
+                    child_care: searchdata['child_care'],
+                    liquor: searchdata['liquor'],
+                    familyrestaurant: searchdata['familyrestaurant'],
+                    beachfront: searchdata['beachfront'],
+                    wheelchair: searchdata['wheelchair'],
+                    delivery: searchdata['delivery'],
+                    food_types:new RegExp(searchdata['food_types'], 'i')
+                }]
             },
             (err, doc) => {
                 if (doc.length) {
@@ -206,7 +205,7 @@ router.post('/searchByFilters', (req, res) => {
                 }
             });
             
-    }
+    
 
 });
 
