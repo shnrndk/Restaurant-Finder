@@ -1,0 +1,51 @@
+<style>
+    mat-form-field {
+      width: 100%;
+    }
+  </style>
+
+    <section class="section-profile-cover section-shaped my-0">
+      <!-- Circles background -->
+      
+      <!-- SVG separator -->
+      <div class="separator separator-bottom separator-skew">
+        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1"
+          xmlns="http://www.w3.org/2000/svg">
+          <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="card card-profile shadow mt--300">
+          <div class="px-4">
+            <div class="container" style="margin-top:50px; margin-bottom:50px">
+              <div class="container">
+                  <table class="table table-hover">
+                      <thead>
+                        <tr>
+                          <th scope="col">Review</th>
+                          <th scope="col">Rating</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Images</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let review of reviews">
+                          <td>{{review.review}}</td>
+                          <td><b>{{review.rating}} Stars</b></td>
+                          <td>{{review.name}} </td>
+                          <td><img src="{{review.pics[0]}}" class="rounded" style="width : 200px; height: auto;">
+                            <img src="{{review.pics[1]}}" class="rounded" style="width : 200px; height: auto;">
+                            <img src="{{review.pics[2]}}" class="rounded" style="width : 200px; height: auto;">
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+              </div>
+            </div>
+  
+          </div>
+        </div>
+      </div>
+    </section>

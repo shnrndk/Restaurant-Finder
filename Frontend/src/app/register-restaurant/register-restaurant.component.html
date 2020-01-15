@@ -37,29 +37,43 @@
                   <div class="col-md-6">
                     <mat-form-field>
                       <input matInput placeholder="Restaurant Name" type="text" formControlName="restaurant_name">
-
+                      <div *ngIf="submitted && restaurantForm.controls.restaurant_name.errors" class="error">
+                          <div *ngIf="restaurantForm.controls.restaurant_name.errors.required" style="color:red">This field is required</div>
+                      </div>
                     </mat-form-field>
                   </div>
                   <div class="col-md-6">
                     <mat-form-field>
                       <input matInput placeholder="Restaurant Register No:" type="text" formControlName="reg_no">
+                      <div *ngIf="submitted && restaurantForm.controls.reg_no.errors" class="error">
+                          <div *ngIf="restaurantForm.controls.reg_no.errors.required" style="color:red">This field is required</div>
+                      </div>
                     </mat-form-field>
                   </div>
 
                   <mat-form-field class="example-full-width">
                     <textarea matInput placeholder="Restaurant Description" formControlName="discription"></textarea>
+                    <div *ngIf="submitted && restaurantForm.controls.discription.errors" class="error">
+                        <div *ngIf="restaurantForm.controls.discription.errors.required" style="color:red">This field is required</div>
+                    </div>
                   </mat-form-field>
                 </div>
                 <div class="row">
                   <div class="col-md-6">
                     <mat-form-field>
                       <input matInput placeholder="Name Of the Owner" type="text" formControlName="owner_name">
+                      <div *ngIf="submitted && restaurantForm.controls.owner_name.errors" class="error">
+                          <div *ngIf="restaurantForm.controls.owner_name.errors.required" style="color:red">This field is required</div>
+                      </div>
                     </mat-form-field>
                   </div>
 
                   <div class="col-md-5">
                     <mat-form-field>
-                      <input matInput placeholder="NIC" type="number" formControlName="NIC">
+                      <input matInput placeholder="NIC" type="number" formControlName="NIC" maxlength="9">
+                      <div *ngIf="submitted && restaurantForm.controls.NIC.errors" class="error">
+                          <div *ngIf="restaurantForm.controls.NIC.errors.required" style="color:red">This field is required</div>
+                      </div>
                     </mat-form-field>
                   </div>
 
@@ -72,6 +86,9 @@
 
                   <mat-form-field>
                     <input matInput placeholder="Street Address 1" type="text" formControlName="streetAddress1">
+                    <div *ngIf="submitted && restaurantForm.controls.streetAddress1.errors" class="error">
+                        <div *ngIf="restaurantForm.controls.streetAddress1.errors.required" style="color:red">This field is required</div>
+                    </div>
                   </mat-form-field>
 
                   <div class="col-md-6">
@@ -82,31 +99,98 @@
                   <div class="col-md-6">
                     <mat-form-field>
                       <input matInput placeholder="City" type="text" formControlName="city">
+                      <div *ngIf="submitted && restaurantForm.controls.city.errors" class="error">
+                          <div *ngIf="restaurantForm.controls.city.errors.required" style="color:red">This field is required</div>
+                      </div>
                     </mat-form-field>
                   </div>
                   <div class="col-md-6">
                     <mat-form-field>
                       <input matInput placeholder="Contact No" type="text" formControlName="phone_no">
+                      <div *ngIf="submitted && restaurantForm.controls.phone_no.errors" class="error">
+                          <div *ngIf="restaurantForm.controls.phone_no.errors.required" style="color:red">This field is required</div>
+                      </div>
                     </mat-form-field>
                   </div>
+                  <div class="col-md-6">
+                      <mat-form-field>
+                        <input matInput placeholder="Email" type="text" formControlName="email">
+                        <div *ngIf="submitted && restaurantForm.controls.email.errors" class="error">
+                            <div *ngIf="restaurantForm.controls.phone_no.errors.required" style="color:red">This field is required</div>
+                        </div>
+                      </mat-form-field>
+                    </div>
                 
                   
             
 
-                  <div style="text-align:center">
-                      <app-material-file-upload (complete)="onFileComplete($event)"></app-material-file-upload>
-                  </div>
+                  
                 
                 </div>
-
-                <b>Available Food Items</b>
-                <div *ngFor="let data of fooditems">
-                    <input type="checkbox" (change)="onChange(data.fooditem, $event.target.checked)"> {{data.fooditem}}
+                <div class="row">
+                  <div class="col-md-6">
+                  <b>Available Food Items</b>
+                      <div *ngFor="let data of fooditems">
+                          <input type="checkbox" (change)="onChange(data.fooditem, $event.target.checked)"> {{data.fooditem}}
+                          <br>
+                      </div>
+                  </div>
+                  <div class="col-md-6">
+                    <b>Available Facilities</b>
                     <br>
+                        <input type="checkbox" formControlName="wifi">  WIFI<br>
+                        <input type="checkbox" formControlName="parking"  [(ngModel)]="parking" name="parking">  Parking  <mat-form-field *ngIf="checkParking()">
+                                                                                        <input matInput placeholder="Number of Vehicles can be parked" type="number" formControlName="parking_slots">
+                                                                                     </mat-form-field><br>
+                        <input type="checkbox" formControlName="child_care">  Child Care<br>
+                        <input type="checkbox" formControlName="liquor">  Liquor<br>
+                        <input type="checkbox" formControlName="familyrestaurant">  Family Restaurant<br>
+                        <input type="checkbox" formControlName="beachfront">  Beach Front<br>
+                        <input type="checkbox" formControlName="wheelchair">  Wheel Chair Accessible<br>
+                        <input type="checkbox" formControlName="delivery">  Delivery<br>
+                    </div>
                 </div>
+                <div class="row">
+                <b>Opening Hours</b>
+                <div class="col-md-2">
+                    <mat-form-field>
+                      <mat-label>Opening Time</mat-label>
+                      <select matNativeControl name="car" formControlName="openinghrs">
+                        <option value="" selected></option>
+                        <option *ngFor="let time of times" [value]="time">
+                          {{time}}
+                        </option>
+                      </select>
+                    </mat-form-field>
+                </div> 
+                <div class="col-md-2">
+                  <mat-form-field>
+                    <mat-label>Closing Time</mat-label>
+                    <select matNativeControl name="car" formControlName="closinghrs">
+                      <option value="" selected></option>
+                      <option *ngFor="let time of times" [value]="time">
+                        {{time}}
+                      </option>
+                    </select>
+                  </mat-form-field>
+                </div>
+              </div>
                 <div class="row justify-content-center">
-                  <input type="submit" value="Submit details" class="btn btn-primary">
+                <agm-map [latitude]="latitude" [longitude]="longitude" (mapClick)="onChoseLocation($event)" style="text-align:center">
+                    <agm-marker
+                      [latitude]="latitude"
+                      [longitude]="longitude"
+                      *ngIf="locationChosen"></agm-marker>
+                </agm-map>
+              </div>
+
+                <div style="text-align:center; margin-top:20px">
+                    <app-material-file-upload (complete)="onFileComplete($event)"></app-material-file-upload>
                 </div>
+
+                <div class="row justify-content-center" style="margin-top:20px">
+                    <input type="submit" value="Submit details" class="btn btn-primary">
+                  </div>
 
               </form>
             </div>

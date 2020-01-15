@@ -14,6 +14,8 @@ export class ViewRestaurantbyIdComponent implements OnInit {
 
   restaurants : Restaurant;
   reg_no
+  lat = 6.7876072;
+  lng = 79.8838391;
 
   ngOnInit() {
     this.reg_no = this.activeroute.snapshot.paramMap.get('reg_no');
@@ -21,7 +23,9 @@ export class ViewRestaurantbyIdComponent implements OnInit {
     this.restaurantservice.viewById(this.reg_no).subscribe(data => 
       this.restaurants = data
     )
-
+    this.lat = this.restaurants['latitude'];
+    this.lng = this.restaurants['longitude'];
+    
 
 
   }

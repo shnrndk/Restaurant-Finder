@@ -41,7 +41,11 @@ import { ReviewFormComponent } from './review-form/review-form.component';
 import { MaterialFileUploadComponent } from './material-file-upload/material-file-upload.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { ChatAppComponent } from './chat-app/chat-app.component';
-
+import { ViewReviewsComponent } from './view-reviews/view-reviews.component';
+import { ContactAdminComponent } from './contact-admin/contact-admin.component';
+import { PostAddsComponent } from './post-adds/post-adds.component';
+import { AgmCoreModule } from '@agm/core';
+import { RequestToAddRestaurantComponent } from './request-to-add-restaurant/request-to-add-restaurant.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,6 +60,11 @@ import { ChatAppComponent } from './chat-app/chat-app.component';
     ReviewFormComponent,
     MaterialFileUploadComponent,
     ChatAppComponent,
+    ViewReviewsComponent,
+    ContactAdminComponent,
+    PostAddsComponent,
+    RequestToAddRestaurantComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -81,7 +90,10 @@ import { ChatAppComponent } from './chat-app/chat-app.component';
     HttpClientModule,
     FormsModule,
     MatProgressBarModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCsXYtv6Q8JjojhHD7V0L6H8fNUjRohqlU'
+    })
   
   ],
   providers: [AuthService,AuthGuard,EventService],

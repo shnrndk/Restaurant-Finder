@@ -25,20 +25,56 @@
                   <h1>Add Your Review</h1>
                 </div>
                 <form [formGroup]="reviewForm" [hidden]="success" (ngSubmit)="onSubmit()">
-                  <div class="row justify-content-center" style="margin-top:40px">
-
-                    <mat-form-field class="example-full-width">
-                      <textarea matInput placeholder="Review" formControlName="review"></textarea>
-                    </mat-form-field>
+                  <div class="row" style="margin-top:40px">
+                    <div class col-md-2>
+                        <div style="text-align:'center'">
+                            <app-material-file-upload (complete)="onFileComplete($event)"></app-material-file-upload>
+                            <b>{{imagecount}} images Has been uploaded.</b>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="col-md-6">
+                        <mat-form-field class="example-full-width">
+                            <textarea matInput placeholder="Review" formControlName="review"></textarea>
+                          </mat-form-field>
+                    </div>
+                    <div class="col-md-3">
+                        <mat-form-field>
+                            <mat-label>Your Rating</mat-label>
+                            <mat-select formControlName="rating" [(ngModel)]="rating" name="rating">
+                              <mat-option  [value]="1"><i class="fa fa-star" aria-hidden="true"></i></mat-option>
+                              <mat-option  [value]="2"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></mat-option>
+                              <mat-option  [value]="3"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></mat-option>
+                              <mat-option  [value]="4"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></mat-option>
+                              <mat-option  [value]="5"><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i><i class="fa fa-star" aria-hidden="true"></i></mat-option>
+                            </mat-select>
+                          </mat-form-field>
+                    </div>
+                    
                   </div>
-                  <div class="row">
+                  
+                  <div class="row justify-content-center">
+                      
+                  </div>
+                  <br>
+                  <br>
  
-                  </div>
+                  <div class="col-md-3">
+                      Your Name: <b>{{Name}}</b>
+                   </div> 
+                   <div class="col-md-3">
+                      Your Rating: <b>{{rating}} Stars</b>
+                   </div> 
+                  
+
                   <div class="row justify-content-center">
                     <input type="submit" value="Submit Review" class="btn btn-primary">
                   </div>
   
                 </form>
+
+                
               </div>
             </div>
   

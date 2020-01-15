@@ -1,0 +1,58 @@
+<style>
+    mat-form-field {
+      width: 100%;
+    }
+  </style>
+
+    <section class="section-profile-cover section-shaped my-0">
+      <!-- Circles background -->
+      
+      <!-- SVG separator -->
+      <div class="separator separator-bottom separator-skew">
+        <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1"
+          xmlns="http://www.w3.org/2000/svg">
+          <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="card card-profile shadow mt--300">
+          <div class="px-4">
+            <div class="container" style="margin-top:50px; margin-bottom:50px">
+              <div class="container">
+                <div class="row justify-content-center">
+                  <h1>Request Information</h1>
+                </div>
+                <form>
+                  <div class="row" style="margin-top:40px">
+                    
+                    
+                    
+                    <div class="col-md-12">
+                        <mat-form-field class="example-full-width">
+                            <textarea  [(ngModel)]="information.description"   matInput placeholder="What do You Want to know" name="description" required></textarea>
+                          </mat-form-field>
+                    </div>
+                    
+                  </div>
+                  
+                  <div class="row justify-content-center">
+                      
+                  </div>
+                  <br>
+                  <br>
+ 
+                  
+                  <div class="row justify-content-center">
+                    <input type="submit" value="Send Email" (click)="onSubmit()" class="btn btn-primary">
+                  </div>
+  
+                </form>
+              </div>
+            </div>
+  
+          </div>
+        </div>
+      </div>
+    </section>

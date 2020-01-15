@@ -4,9 +4,9 @@ var router = express.Router();
 
 
 router.use('/restaurants',require('./restaurant'));
-
+router.use('/reviews',require('./review'));
+router.use('/adds',require('./adds'));
 router.use('/users',require('./users'));
-//  app.use('/user',user);
 
 
 

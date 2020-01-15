@@ -6,6 +6,7 @@ import { RestaurantServiceService } from '../restaurant-service.service';
 import { Router } from '@angular/router';
 import { Restaurant } from '../Models/Restaurant.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
 
 
 /**
@@ -18,15 +19,26 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ViewRestaurantsComponent implements OnInit {
 
-  constructor(private restaurantservice: RestaurantServiceService, private formBuilder: FormBuilder, private router : Router) { }
+  constructor(private restaurantservice: RestaurantServiceService, private formBuilder: FormBuilder, private router : Router,private _snackBar : MatSnackBar) { }
 
   restaurants : Restaurant;
   searchForm: FormGroup;
+  filters=false;
   ngOnInit() {
     this.restaurantservice.view().subscribe(data => this.restaurants = data);
 
     this.searchForm = this.formBuilder.group({
-      "searchdata" : ['']
+      "searchdata" : [''],
+      "wifi":[false],
+      "parking":[false],
+      "child_care":[false],
+      "liquor":[false],
+      "familyrestaurant":[false],
+      "beachfront":[false],
+      "wheelchair":[false],
+      "delivery":[false],
+      "food_types":[false],
+      "filters":[false]
     });
     this.searchForm.valueChanges.subscribe(console.log)
   }
@@ -36,16 +48,54 @@ export class ViewRestaurantsComponent implements OnInit {
     
     if(this.searchForm.value['searchdata'].length==0){
       this.searchForm.value['searchdata']=0;
+      
     }
-    this.restaurantservice.search(this.searchForm.value['searchdata'])
+    
+      if(this.filters==false){
+        this.restaurantservice.search(this.searchForm.value['searchdata'])
         .subscribe(
           data=>this.restaurants = data,
           response=>console.log('Success!',response),
           
       );
+
+        this.restaurantservice.searchByCity(this.searchForm.value['searchdata'])
+        .subscribe(
+          data=>this.restaurants = data,
+          response=>console.log('Success!',response),
+      );
+      }else{
+        this.restaurantservice.searchByFilters(this.searchForm.value)
+        .subscribe(
+          data=>this.restaurants = data,
+          response=>console.log('Success!',response),
+      );
+      }
+
+  }
+  openSnackBar(msg) {
+    this._snackBar.open(msg,"OK");
   }
 
   onClick(reg_no){
     this.router.navigate(['ViewRestaurantById',reg_no])
+  }
+  checkFilters(){
+    if((this.filters==true)){
+      return true
+    }else{
+      return false
+    }
+  }
+
+
+  getResults(){
+    this.restaurantservice.getSortedRatings().subscribe(
+      data => this.restaurants = data
+    )
+  }
+
+  clearResults(){
+    this.restaurantservice.view().subscribe(data => this.restaurants = data);
   }
 }

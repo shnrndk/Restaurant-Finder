@@ -9,6 +9,7 @@ import { HomeComponent } from './home.component';
 
 import { SectionsModule } from '../sections/sections.module';
 
+import { ViewAddsComponent } from './view-adds/view-adds.component';
 @NgModule({
     imports: [
         NgbModule,
@@ -18,7 +19,7 @@ import { SectionsModule } from '../sections/sections.module';
         RouterModule,
         SectionsModule
     ],
-    declarations: [ HomeComponent ],
+    declarations: [ HomeComponent, ViewAddsComponent ],
     exports:[ HomeComponent ],
     providers: []
 })

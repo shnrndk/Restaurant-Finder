@@ -14,22 +14,38 @@ import { ViewRestaurantbyIdComponent } from './view-restaurantby-id/view-restaur
 import { AuthGuard } from './auth.guard';
 import { ReviewFormComponent } from './review-form/review-form.component';
 import { ChatAppComponent } from './chat-app/chat-app.component';
+import { ViewReviewsComponent } from './view-reviews/view-reviews.component';
+import { PostAddsComponent } from './post-adds/post-adds.component';
+import { ContactAdminComponent } from './contact-admin/contact-admin.component';
+import { RequestToAddRestaurantComponent } from './request-to-add-restaurant/request-to-add-restaurant.component';
 
 const routes: Routes =[
     { path: 'home',             component: HomeComponent },
     { path: 'user-profile',     component: ProfileComponent },
     { path: 'register',           component: SignupComponent },
-    { path: 'chat',   component:ChatAppComponent },
+    { path: 'chat',   component:ChatAppComponent  },
     { path: 'login',          component: LoginComponent },
     { path: 'registerRestaurant',     component: RegisterRestaurantComponent, canActivate:[AuthGuard]},
     { path: 'viewRestaurants',     component: ViewRestaurantsComponent },
+    { path: 'requestToAdd',     component: RequestToAddRestaurantComponent, canActivate:[AuthGuard] },
+    { path: 'postAdds',     component: PostAddsComponent , canActivate:[AuthGuard] },
     { path: 'ViewRestaurantById/:reg_no',component: ViewRestaurantbyIdComponent,
         children: [
             {
                 path: 'AddReview',
                 component: ReviewFormComponent,
                 canActivate:[AuthGuard]
-            }]
+            },
+            {
+                path: 'ViewReview',
+                component: ViewReviewsComponent
+            },
+            {
+              path: 'contactAdmin',
+              component: ContactAdminComponent,
+              canActivate:[AuthGuard]
+            }
+          ]
           },
     { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
