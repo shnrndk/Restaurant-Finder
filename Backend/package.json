@@ -1,12 +1,12 @@
 {
-  "name": "emoh",
+  "name": "resraurantFinder",
   "version": "1.0.0",
-  "description": "Computerized system for Kesbewa MOH",
+  "description": "Find near by restaurants",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "CS08",
+  "author": "shnrndk",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
